@@ -6,7 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-
     // Define allowable filters
     char *filters = "begr";
 
@@ -119,6 +118,18 @@ int main(int argc, char *argv[])
         case 'r':
             reflect(height, width, image);
             break;
+    }
+
+    if (getenv("PRINTSTUFF")) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                // weird order?
+                printf("%hhu %hhu %hhu\n",
+                       image[y][x].rgbtBlue,
+                       image[y][x].rgbtGreen,
+                       image[y][x].rgbtRed);
+            }
+        }
     }
 
     // Write outfile's BITMAPFILEHEADER
